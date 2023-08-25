@@ -24,8 +24,9 @@ pipeline {
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
                     sh "docker push ${env.dockerHubUser}/calculategrowthapp:1.0.0"
 					echo "docker push DOCKER_HUB_USERNAME/DockerImageName:TagName"
-                }
-            }			
+				}
+			}
+		}
         stage("Deploy"){
             steps{
                 sh "docker-compose down && docker-compose up -d"
@@ -33,4 +34,3 @@ pipeline {
             }
         }
     }
-}
