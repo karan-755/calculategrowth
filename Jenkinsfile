@@ -12,7 +12,8 @@ pipeline {
 				withCredentials([usernamePassword(credentialsId:"dockerhub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
                     sh "docker build -t kshitibartakke/calculategrowth ."
-					echo "docker push DOCKER_HUB_USERNAME/DockerImageName:TagName"
+					echo "docker push DOCKER_HUB_USERNAME/DockerImageName:TagName" 
+					}
             }
         }
         stage("Docker Run"){
