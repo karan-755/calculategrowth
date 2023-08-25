@@ -7,13 +7,9 @@ pipeline {
             }
         }
         stage("Build & Test"){
-            steps{
-            }
         }
         stage("Docker Run"){
-            steps{
-                }
-            }
+        }
         stage("Push DockerImage to DockrHub"){
             steps{
                 withCredentials([usernamePassword(credentialsId:"dockerhub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
@@ -24,8 +20,6 @@ pipeline {
 			}
 		}
         stage("Deploy"){
-            steps{               
-                }
             }
         }
     }
