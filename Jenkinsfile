@@ -8,26 +8,31 @@ pipeline {
         }
         stage("Build & Test"){
             steps{
-		echo "Build and Test"
+				echo "Build and Test"
+				withCredentials([usernamePassword(credentialsId:"dockerhub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
+                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                    sh "docker build -t kshitibartakke/calculategrowth ."
+					echo "docker push DOCKER_HUB_USERNAME/DockerImageName:TagName"
             }
         }
         stage("Docker Run"){
             steps{
-		echo "Docker Run"
+				echo "Docker Run"
+				sh "docker run -p 8501:8501 kshitibartakke/calculategrowth"
                 }
             }
         stage("Push DockerImage to DockrHub"){
             steps{
                 withCredentials([usernamePassword(credentialsId:"dockerhub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                    sh "docker push ${env.dockerHubUser}/calculategrowthapp:latest"
-					echo "docker push DOCKER_HUB_USERNAME/DockerImageName:TagName"
+                    sh "docker images"
+					sh "docker push kshitibartakke/calculategrowth:latest"
 				}
 			}
 		}
         stage("Deploy"){
             steps{   
-		echo "Deploy"            
+				echo "Deploy"            
                 }
             }
         }
