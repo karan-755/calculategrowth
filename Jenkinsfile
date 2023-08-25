@@ -8,7 +8,7 @@ pipeline {
         }
         stage("Build & Test"){
             steps{
-                sh "docker build . -t calculategrowthapp:1.0.0"
+                sh "docker build . -t calculategrowthapp:latest"
 				echo "docker build . -t DockerImageName:TagName"
             }
         }
@@ -22,7 +22,7 @@ pipeline {
             steps{
                 withCredentials([usernamePassword(credentialsId:"dockerhub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                    sh "docker push ${env.dockerHubUser}/calculategrowthapp:1.0.0"
+                    sh "docker push ${env.dockerHubUser}/calculategrowthapp:latest"
 					echo "docker push DOCKER_HUB_USERNAME/DockerImageName:TagName"
 				}
 			}
