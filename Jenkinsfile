@@ -8,14 +8,10 @@ pipeline {
         }
         stage("Build & Test"){
             steps{
-                sh "docker build . -t calculategrowthapp:latest"
-				echo "docker build . -t DockerImageName:TagName"
             }
         }
         stage("Docker Run"){
             steps{
-                sh"docker run -p 8501:8501 calculategrowthapp" 
-				echo "docker run -p ServerPort:ContainerPort DockerImageName"
                 }
             }
         stage("Push DockerImage to DockrHub"){
