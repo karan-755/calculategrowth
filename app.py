@@ -1,8 +1,4 @@
 import streamlit as st
-
-
-
-
 st.title("Hello Streamlit")
 st.header("Let us Calculate % Growth Effortlessly!  ")
 initial = st.number_input("Initial investment in USD")
