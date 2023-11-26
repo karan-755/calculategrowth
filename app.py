@@ -1,6 +1,6 @@
 import streamlit as st
 st.title("Hello Streamlit")
-st.header("Let us Calculate % Growth Effortlessly! by KARAN ")
+st.header("Let us Calculate % Growth Effortlessly! by  ")
 initial = st.number_input(" Initial investment in USD ")
 yr = st.number_input("Growth Period in years")
 growth = st.number_input("Growth Rate in %")
