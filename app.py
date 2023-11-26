@@ -1,6 +1,6 @@
 import streamlit as st
 st.title("Hello Streamlit")
-st.header("Let us Calculate % Growth Effortlessly! by KARAN  ")
+st.header("Let us Calculate % Growth Effortlessly! by KARAN Gaikwad.  ")
 initial = st.number_input(" Initial investment in USD ")
 yr = st.number_input("Growth Period in years")
 growth = st.number_input("Growth Rate in %")
@@ -12,5 +12,3 @@ for year in range(int(yr)):
 
 # perform cashflow projections for the next 5 years
 st.write(f'Terminal value of {initial} after {yr} years at a growth rate of {growth} is {terminal_value}')
-
-
